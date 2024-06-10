@@ -50,18 +50,18 @@ def test(examples, Attr, concept_list, conceptProbs, AttrConcept, probability_li
     print("Misclassification Rate={}%".format(misclassification_rate))
     print("Accuracy={}%".format(accuracy))
 
-def main():
-    import pandas as pd
-    from pandas import DataFrame 
-    data = DataFrame.from_csv('PlayTennis.csv')
-    concept = str(list(data)[-1])
-    concept_list = set(data[concept])
-    Attr = {}
-    for a in list(data)[:-1]:
-        Attr[a] = set(data[a])
-    conceptProbs, AttrConcept, probability_list = train(data, Attr, concept_list, concept)
 
-    examples = DataFrame.from_csv('PlayTennis.csv')
-    test(examples.values, Attr, concept_list, conceptProbs, AttrConcept, probability_list)
+import pandas as pd
+from pandas import DataFrame 
+data = pd.read_csv('PlayTennis.csv')
+concept = str(list(data)[-1])
+concept_list = set(data[concept])
+Attr = {}
+for a in list(data)[:-1]:
+     Attr[a] = set(data[a])
+conceptProbs, AttrConcept, probability_list = train(data, Attr, concept_list, concept)
 
-main()
+examples = pd.read_csv('PlayTennis.csv')
+test(examples.values, Attr, concept_list, conceptProbs, AttrConcept, probability_list)
+
+
