@@ -36,8 +36,6 @@ def classify_new_instance(outlook, temperature, humidity, wind, encoder, model):
 new_pred = classify_new_instance('Rain', 'Mild', 'High', 'Strong', encoder, dtree)
 print("Prediction: ", new_pred)
 
-
-accuracy = (Y_pred == Y_test).mean()
 print("Accuracy: ",(Y_pred == Y_test).mean())
 
 # OUTPUT:
