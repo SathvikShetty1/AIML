@@ -13,11 +13,9 @@ def lowess_smoothing(x, y, frac=0.45):
         x_subset = x[left:right]
         y_subset = y[left:right]
         
-        # Calculate weights based on distances
         distances = np.abs(x_subset - x[i])
         weights = np.exp(-distances / (distances.max() * frac))
         
-        # Fit a weighted linear regression model
         model = LinearRegression()
         model.fit(x_subset[:, np.newaxis], y_subset, sample_weight=weights)
         yest[i] = model.predict([[x[i]]])[0]  
