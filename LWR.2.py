@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
-def lowess_smoothing(x, y, frac=0.45):
+def lowess(x, y, frac):
     n = len(x)
     r = int(np.ceil(frac * n))
     yest = np.zeros(n)
@@ -25,14 +25,9 @@ def lowess_smoothing(x, y, frac=0.45):
 n = 100
 x = np.linspace(0, 2 * np.pi, n)
 y = np.sin(x) + 0.3 * np.random.randn(n)
-yest = lowess_smoothing(x, y, frac=0.5)
+yest = lowess(x, y, frac=0.45)
 
-plt.plot(x, y, 'r.', label='Original data')
-plt.plot(x, yest, 'b-', label='LOWESS fit')
-plt.xlabel('X')
-plt.ylabel('Y')
+plt.plot(x, y, 'r.')
+plt.plot(x, yest, 'b-')
 plt.title('Locally Weighted Regression')
-plt.legend()
 plt.show()
-
-
