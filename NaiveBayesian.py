@@ -19,7 +19,6 @@ Xtrain_dm = count_v.fit_transform(Xtrain)
 Xtest_dm = count_v.transform(Xtest)
 print("\n the words or tokens in text document")
 print(count_v.get_feature_names())
-df = pd.DataFrame(Xtrain_dm.toarray(),columns=count_v.get_feature_names())
 
 
 from sklearn.naive_bayes import MultinomialNB
